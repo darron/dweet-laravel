@@ -44,5 +44,12 @@ class DweetController extends BaseController {
     // Send the response.
     return Response::json($json);
 	}
+  
+  public function getLatest($thing)
+  {
+    $dweet = new Dweet();
+    $last_dweet = $dweet->getLast($thing);
+    return Response::json($last_dweet);
+  }
 
 }
