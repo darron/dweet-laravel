@@ -25,7 +25,8 @@ class DweetController extends BaseController {
     $input = Input::all();
     $date = new DateTime('NOW');
     $date_time = $date->format(DateTime::ISO8601);
-    $random_name = "dude-" . rand(100, 9999);
+    $name = new Thing();
+    $random_name = $name->generateName();
     if (is_array($input)) {
       $with = array("thing" => $random_name, "created" => $date_time, "content" => $input);
     } else {
