@@ -22,17 +22,26 @@ class DweetController extends BaseController {
 
 	public function getIndex()
 	{
+    // Get all the pieces.
     $input = Input::all();
     $date = new DateTime('NOW');
     $date_time = $date->format(DateTime::ISO8601);
     $name = new Thing();
     $random_name = $name->generateName();
+    
+    // Build the dweet.
     if (is_array($input)) {
       $with = array("thing" => $random_name, "created" => $date_time, "content" => $input);
     } else {
       $with = array("thing" => $random_name, "created" => $date_time);
     }
     $json = array("this" => "succeeded", "by" => "dweeting", "the" => "dweet", "with" => $with);
+    
+    // Save the Dweet
+    $dweet = new Dweet();
+    $dweet->add($json);
+    
+    // Send the response.
     return Response::json($json);
 	}
 
