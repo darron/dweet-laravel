@@ -16,6 +16,8 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('dweet/for/{name}', 'DweetController@getIndex');
+
 Route::get('dweet', 'DweetController@getIndex');
 
 Route::get('get/latest/dweet/for/{name}', 'DweetController@getLatest');

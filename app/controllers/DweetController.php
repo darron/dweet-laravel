@@ -20,14 +20,19 @@ class DweetController extends BaseController {
 		return View::make('hello');
 	}
 
-	public function getIndex()
+	public function getIndex($name=false)
 	{
     // Get all the pieces.
     $input = Input::all();
     $date = new DateTime('NOW');
     $date_time = $date->format(DateTime::ISO8601);
-    $name = new Thing();
-    $random_name = $name->generateName();
+    
+    if($name) {
+      $random_name = $name;
+    } else {
+      $new_thing = new Thing();
+      $random_name = $new_thing->generateName();
+    }
     
     // Build the dweet.
     if (is_array($input)) {
