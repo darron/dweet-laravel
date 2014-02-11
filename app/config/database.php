@@ -1,5 +1,18 @@
 <?php
 
+if (isset($_ENV["LARAVEL_ON_HEROKU"])) {
+  $url = $_ENV["REDISTOGO_URL"];
+  $REDIS_HOST = $url['host'];
+  $REDIS_PORT = $url['port'];
+  $REDIS_USERNAME = $url['user'];
+  $REDIS_PASSWORD = $url['pass'];
+} else {
+  $REDIS_HOST = '127.0.0.1';
+  $REDIS_PORT = 6379;
+  $REDIS_USERNAME = '';
+  $REDIS_PASSWORD = '';
+}
+
 return array(
 
 	/*
@@ -114,8 +127,10 @@ return array(
 		'cluster' => false,
 
 		'default' => array(
-			'host'     => '127.0.0.1',
-			'port'     => 6379,
+			'host'     => $REDIS_HOST,
+			'port'     => $REDIS_PORT,
+      'username' => $REDIS_USERNAME,
+      'password' => $REDIS_PASSWORD,
 			'database' => 0,
 		),
 
