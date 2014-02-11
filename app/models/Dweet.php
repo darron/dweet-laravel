@@ -11,13 +11,12 @@ class Dweet
   public function getLast($thing) {
     $length = $this->redis->llen($thing);
     if($length > 0) {
-      $dweet_id = $this->redis->lrange($thing, -1, 0);
+      $dweet_id = $this->redis->lrange($thing, 0, 0);
       $dweet = $this->get($dweet_id[0]);
       return $dweet;
     } else {
       return $this->no_dweet_found;
     }
-    
   }
   
   public function getAll($thing) {
