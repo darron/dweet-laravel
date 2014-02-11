@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_ENV["LARAVEL_ON_HEROKU"])) {
-  $url = $_ENV["REDISTOGO_URL"];
+  $url = parse_url($_ENV["REDISTOGO_URL"]);
   $REDIS_HOST = $url['host'];
   $REDIS_PORT = $url['port'];
   $REDIS_USERNAME = $url['user'];
