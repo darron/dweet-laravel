@@ -56,5 +56,12 @@ class DweetController extends BaseController {
     $last_dweet = $dweet->getLast($thing);
     return Response::json($last_dweet);
   }
+  
+  public function getAll($thing)
+  {
+    $dweet = new Dweet();
+    $dweets = $dweet->getAll($thing);
+    return Response::json($dweets);
+  }
 
 }

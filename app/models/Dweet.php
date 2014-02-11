@@ -5,7 +5,7 @@ class Dweet
   function __construct() {
     $this->redis = Redis::connection();
     $this->expire = 86400;
-    $this->no_dweet_found = array("No dweet found." => "true");
+    $this->no_dweets_found = array("No dweets found." => "true");
   }
   
   public function getLast($thing) {
@@ -15,12 +15,27 @@ class Dweet
       $dweet = $this->get($dweet_id[0]);
       return $dweet;
     } else {
-      return $this->no_dweet_found;
+      return $this->no_dweets_found;
     }
   }
   
   public function getAll($thing) {
-    
+    $length = $this->getLength($thing);
+    if($length > 0) {
+      $dweet_ids = $this->redis->lrange($thing, 0, $length-1);
+      $dweets = $this->processDweets($dweet_ids);
+      return $dweets;
+    } else {
+      return $this->no_dweets_found;
+    }
+  }
+  
+  private function processDweets($ids) {
+    $dweet_content = array();
+    foreach ($ids as $id) {
+      $dweet_content[] = $this->get($id);
+    }
+    return $dweet_content;
   }
   
   private function getLength($thing) {

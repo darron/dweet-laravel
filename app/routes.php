@@ -22,7 +22,4 @@ Route::get('dweet', 'DweetController@getIndex');
 
 Route::get('get/latest/dweet/for/{name}', 'DweetController@getLatest');
 
-Route::get('get/dweets/for/{name}', function($name)
-{
-    return $name;
-});
+Route::get('get/dweets/for/{name}', 'DweetController@getAll');
