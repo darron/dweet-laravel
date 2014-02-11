@@ -9,7 +9,7 @@ class Dweet
   }
   
   public function getLast($thing) {
-    $length = $this->redis->llen($thing);
+    $length = $this->getLength($thing);
     if($length > 0) {
       $dweet_id = $this->redis->lrange($thing, 0, 0);
       $dweet = $this->get($dweet_id[0]);
@@ -21,6 +21,10 @@ class Dweet
   
   public function getAll($thing) {
     
+  }
+  
+  private function getLength($thing) {
+    return $length = $this->redis->llen($thing);
   }
   
   public function get($dweet) {
