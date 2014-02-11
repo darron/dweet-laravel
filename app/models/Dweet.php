@@ -4,6 +4,7 @@ class Dweet
 {
   function __construct() {
     $this->redis = Redis::connection();
+    $this->expire = 86400;
   }
   
   public function getLast($thing) {
@@ -15,11 +16,14 @@ class Dweet
   }
   
   public function add($dweet) {
+    // Save the dweet.
+    $dweet_id = $this->redis->incr('dweets');
+    $this->redis->set($dweet_id, json_encode($dweet));
+    $this->redis->expire($dweet_id, $this->expire);
+    // Save in the $thing set.
     $thing = $dweet['with']['thing'];
-    $time = $dweet['with']['created'];
-    $key = $thing . ":" . $time;
-    $this->redis->set("$key", json_encode($dweet));
-    $this->redis->expire("$key", 86400);
+    $this->redis->lpush($thing, $dweet_id);
+    $this->redis->expire($thing, $this->expire);
   }
 }
 ?>
