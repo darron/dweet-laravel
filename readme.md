@@ -1,11 +1,14 @@
 ## dweet-laravel
 
-Just playing around with the Laravel framework and cloning Dweet.io.
+Just playing around with the [Laravel framework](http://laravel.com/) and cloning [Dweet.io](http://dweet.io/).
+
+Live example is here: [http://dweet-laravel.herokuapp.com/](http://dweet-laravel.herokuapp.com/)
 
 ### Todo:
 
-1. Make sure "thing" is unique? Needed?
+1. Make sure "thing" is unique? Needed? Not sure I need to.
 2. Add route to deal with posted Json.
+3. Known possible bug: deal with missing Dweets in processDweets
 
 ### Done:
 
