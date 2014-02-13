@@ -5,6 +5,10 @@ WORKDIR /srv/www
 RUN service redis-server start
 # RUN service memcached start
 
+RUN mkdir /srv/logs
+
+ADD httpd.conf /srv/conf/httpd.conf
+
 ADD . /srv/www
 # RUN composer install
 RUN /usr/local/sbin/php-fpm -y /srv/conf/php-fpm.conf -c /srv/conf/php.ini
