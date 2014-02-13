@@ -2,7 +2,8 @@ FROM octohost/laravel
 
 WORKDIR /srv/www
 
-RUN apt-get install redis-server && service redis-server start
+RUN service redis-server start
+# RUN service memcached start
 
 ADD . /srv/www
 RUN composer install
