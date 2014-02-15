@@ -2,7 +2,7 @@ FROM octohost/php5
 
 WORKDIR /srv/www
 
-RUN service start redis-server
+RUN service redis-server start
 
 ADD . /srv/www
 ADD ./default /etc/nginx/sites-available/default
