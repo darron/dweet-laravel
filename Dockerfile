@@ -1,4 +1,4 @@
-FROM octohost/php
+FROM octohost/php5
 
 WORKDIR /srv/www
 
