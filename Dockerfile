@@ -2,7 +2,7 @@ FROM octohost/php5
 
 WORKDIR /srv/www
 
-RUN apt-get update && apt-get install -y redis-server
+RUN service start redis-server
 
 ADD . /srv/www
 ADD ./default /etc/nginx/sites-available/default
