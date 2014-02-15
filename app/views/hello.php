@@ -1,3 +1,12 @@
+<?php
+
+if (isset($_SERVER['HTTP_HOST'])) {
+  $url = $_SERVER['HTTP_HOST'];
+} else {
+  $url = "localhost:8000";
+}
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -38,13 +47,13 @@
 		<h1><a href="http://dweet.io/" title="dweet.io - Share your thing.">Dweet.io</a> Clone</h1>
     <p>Some example URLs:</p>
 
-    <code>http://<?php echo $_SERVER['HTTP_HOST'] ?>/dweet?hello=world&foo=bar</code><br/>
+    <code>http://<?php echo $url ?>/dweet?hello=world&foo=bar</code><br/>
 
-    <code>http://<?php echo $_SERVER['HTTP_HOST'] ?>/dweet/for/[insert_name_here]?hello=world&foo=bar</code><br/>
+    <code>http://<?php echo $url ?>/dweet/for/[insert_name_here]?hello=world&foo=bar</code><br/>
 
-    <code>http://<?php echo $_SERVER['HTTP_HOST'] ?>/get/latest/dweet/for/[the_dweeters_name]</code><br/>
+    <code>http://<?php echo $url ?>/get/latest/dweet/for/[the_dweeters_name]</code><br/>
 
-    <code>http://<?php echo $_SERVER['HTTP_HOST'] ?>/get/dweets/for/[the_dweeters_name]</code><br/>
+    <code>http://<?php echo $url ?>/get/dweets/for/[the_dweeters_name]</code><br/>
 
     <p>All data only persists in Redis for 24 hours. Then it disappears.</p>
     
