@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y redis-server
 ADD . /srv/www
 ADD ./default /etc/nginx/sites-available/default
 
-RUN  mkdir /srv/www/public/logs/ && chmod 777 /srv/www/public/logs/
+RUN mkdir /srv/www/public/logs/ && chmod 777 /srv/www/public/logs/
+RUN chmod -R 777 /srv/www/app/storage/
 
 EXPOSE 80
 
