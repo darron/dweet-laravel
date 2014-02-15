@@ -2,7 +2,7 @@
 
 Just playing around with the [Laravel framework](http://laravel.com/) and cloning [Dweet.io](http://dweet.io/).
 
-Live example is here: [http://dweet-laravel.herokuapp.com/](http://dweet-laravel.herokuapp.com/)
+Live example is here: [http://dweet.octohost.io/](http://dweet.octohost.io/)
 
 ### Todo:
 
